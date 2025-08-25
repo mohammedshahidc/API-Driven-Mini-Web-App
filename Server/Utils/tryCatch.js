@@ -8,4 +8,4 @@ const tryCatch = (controller) => async (req, res, next) => {
     }
 };
 
-module.exports = tryCatch;
+export default tryCatch;

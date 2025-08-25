@@ -11,4 +11,4 @@ class customeError extends Error {
     }
 
 }
-module.exports=customeError
+export default customeError
