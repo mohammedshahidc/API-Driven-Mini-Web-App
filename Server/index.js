@@ -5,6 +5,7 @@ import errorManager from './Middlewares/errorHandler.js';
 import Route from './Routes/route.js';
 import mongoose from 'mongoose';
 
+
 dotenv.config();
 mongoose.connect(process.env.MONGOOSE_CONNECTIONSTRING)
 .then(()=>console.log('Db connected sucessfully'))
@@ -12,7 +13,14 @@ mongoose.connect(process.env.MONGOOSE_CONNECTIONSTRING)
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true,  
+  })
+);
+
 app.use(express.json());
 
 app.use('/api',Route)
